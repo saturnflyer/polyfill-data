@@ -5,7 +5,7 @@ require_relative "polyfill/data/version"
 if RUBY_VERSION >= "3.2.0"
   warn "You can remove the 'polyfill-data' gem now."
 else
-  Object.send(:remove_const, :Data)
+  Object.send(:remove_const, :Data) rescue nil
   class Data < Object
     class << self
       undef_method :new
