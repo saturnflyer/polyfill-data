@@ -12,6 +12,14 @@ If bundler is not being used to manage dependencies, install the gem by executin
 
     $ gem install polyfill-data
 
+Polyfill-Data is cryptographically signed. To be sure the gem you install hasn’t been tampered with:
+
+Add my the key (if you haven’t already) as a trusted certificate
+
+    gem cert --add <(curl -Ls https://raw.github.com/saturnflyer/polyfill-data/main/certs/saturnflyer.pem)
+
+    gem install polyfill-data -P HighSecurity
+
 ## Usage
 
 ```ruby
