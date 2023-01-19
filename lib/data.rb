@@ -17,7 +17,7 @@ else
 
       klass.define_singleton_method(:members) { args.map{ _1.intern } }
 
-      klass.define_singleton_method(:new){|*new_args, **new_kwargs, &block|
+      klass.define_singleton_method(:new) do |*new_args, **new_kwargs, &block|
         arg_comparison = new_kwargs.any? ? new_kwargs.keys : new_args
         if arg_comparison.size != args.size
           raise ArgumentError
@@ -30,7 +30,7 @@ else
           end
           instance.send(:initialize, **args_to_hash, &block)
         end
-      }
+      end
 
       args.map do |arg|
         if klass.method_defined?(arg)
@@ -42,6 +42,10 @@ else
       end
 
       klass
+    end
+
+    def members
+      self.class.members
     end
 
     def initialize(*args, **kwargs)
@@ -63,6 +67,10 @@ else
       @attributes.slice(*array)
     end
 
+    def to_h(&block)
+      @attributes.to_h(&block)
+    end
+
     def hash
       to_h.hash
     end
@@ -71,8 +79,8 @@ else
       self.class == other.class && hash == other.hash
     end
 
-    def members
-      self.class.members
+    def ==(other)
+      self.class == other.class && to_h == other.to_h
     end
 
     def inspect
@@ -86,14 +94,6 @@ else
 
     def with(**kwargs)
       self.class.new(*@attributes.merge(kwargs).values)
-    end
-
-    def to_h(&block)
-      @attributes.to_h(&block)
-    end
-
-    def ==(other)
-      self.class == other.class && to_h == other.to_h
     end
   end
 end
