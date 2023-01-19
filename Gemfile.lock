@@ -1,0 +1,30 @@
+PATH
+  remote: .
+  specs:
+    polyfill-data (1.0.0)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    debug (1.7.1)
+      irb (>= 1.5.0)
+      reline (>= 0.3.1)
+    io-console (0.6.0)
+    irb (1.6.2)
+      reline (>= 0.3.0)
+    minitest (5.17.0)
+    rake (13.0.6)
+    reline (0.3.2)
+      io-console (~> 0.5)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  debug
+  minitest (~> 5.0)
+  polyfill-data!
+  rake (~> 13.0)
+
+BUNDLED WITH
+   2.1.4
