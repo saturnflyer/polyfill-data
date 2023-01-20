@@ -17,7 +17,7 @@ Gem::Specification.new do |spec|
   spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = "https://github.com/saturnflyer/polyfill-data.git"
 
-  spec.files = Dir["{lib,certs}/**/*"] + ["Rakefile", "README.md"]
+  spec.files = Dir["{lib,certs}/**/*"] + ["Rakefile", "README.md", "CHANGELOG.md"]
   spec.test_files = Dir["test/*"]
   spec.bindir = "exe"
   spec.executables = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
