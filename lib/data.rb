@@ -102,7 +102,7 @@ else
     alias_method :to_s, :inspect
 
     def with(**kwargs)
-      self.class.new(*@attributes.merge(kwargs).values)
+      self.class.new(**@attributes.merge(kwargs))
     end
   end
 end
