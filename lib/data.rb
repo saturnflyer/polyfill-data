@@ -56,16 +56,8 @@ else
       self.class.members
     end
 
-    def initialize(*args, **kwargs)
-      @attributes = case
-      when args.empty? && kwargs.empty?
-        {}
-      when args.empty?
-        kwargs
-      else
-        raise ArgumentError unless args.length == members.length
-        Hash[members.zip(args)]
-      end
+    def initialize(**kwargs)
+      @attributes = kwargs
     end
 
     def deconstruct
