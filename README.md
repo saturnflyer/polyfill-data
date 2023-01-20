@@ -1,6 +1,6 @@
 # Polyfill - Data
 
-Add the Ruby 3.2 Data class to earlier Rubies.
+Add the Ruby 3.2 [Data](https://docs.ruby-lang.org/en/3.2/Data.html) class to earlier Rubies.
 
 ## Installation
 
@@ -14,7 +14,7 @@ If bundler is not being used to manage dependencies, install the gem by executin
 
 Polyfill-Data is cryptographically signed. To be sure the gem you install hasn’t been tampered with:
 
-Add my the key (if you haven’t already) as a trusted certificate
+Add the public key (if you haven’t already) as a trusted certificate
 
     gem cert --add <(curl -Ls https://raw.github.com/saturnflyer/polyfill-data/main/certs/saturnflyer.pem)
 
