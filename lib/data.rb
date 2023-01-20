@@ -23,17 +23,15 @@ else
       klass.define_singleton_method(:members) { args.map{ _1.intern } }
 
       klass.define_singleton_method(:new) do |*new_args, **new_kwargs, &block|
-        arg_comparison = new_kwargs.any? ? new_kwargs.keys : new_args
-        if arg_comparison.size != args.size
-          raise ArgumentError
+
+        init_kwargs = if new_args.any?
+          Hash[members.take(new_args.size).zip(new_args)]
+        else
+          new_kwargs
         end
+
         self.allocate.tap do |instance|
-          args_to_hash = if !new_kwargs.any?
-            Hash[members.take(new_args.size).zip(new_args)]
-          else
-            new_kwargs
-          end
-          instance.send(:initialize, **args_to_hash, &block)
+          instance.send(:initialize, **init_kwargs, &block)
         end
       end
       class << klass
