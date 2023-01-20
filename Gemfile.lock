@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    polyfill-data (1.0.0)
+    polyfill-data (1.0.1)
 
 GEM
   remote: https://rubygems.org/
@@ -27,4 +27,4 @@ DEPENDENCIES
   rake (~> 13.0)
 
 BUNDLED WITH
-   2.1.4
+   2.3.12

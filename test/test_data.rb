@@ -118,6 +118,9 @@ class TestData < Minitest::Test
     assert_equal({foo: 1}, test.deconstruct_keys(%i[foo baz]))
     assert_raises(TypeError) { test.deconstruct_keys(0) }
 
+    assert_equal([1, 2], test.deconstruct)
+    assert_equal([1, 2], test.to_a)
+
     assert_kind_of(Integer, test.hash)
   end
 
@@ -166,5 +169,14 @@ class TestData < Minitest::Test
     assert_equal('#<data >', test.inspect)
     assert_equal([], test.members)
     assert_equal({}, test.to_h)
+  end
+
+  def test_square_braces
+    klass = Data.define(:amount, :unit)
+
+    distance = klass[10, 'km']
+
+    assert_equal(10, distance.amount)
+    assert_equal('km', distance.unit)
   end
 end

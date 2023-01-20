@@ -31,6 +31,9 @@ else
           instance.send(:initialize, **args_to_hash, &block)
         end
       end
+      class << klass
+        alias_method :[], :new
+      end
 
       args.map do |arg|
         if klass.method_defined?(arg)
@@ -60,11 +63,19 @@ else
       end
     end
 
+    def deconstruct
+      to_a
+    end
+
     def deconstruct_keys(array)
       raise TypeError unless array.is_a?(Array) || array.nil?
       return @attributes if array&.first.nil?
 
       @attributes.slice(*array)
+    end
+
+    def to_a
+      @attributes.values
     end
 
     def to_h(&block)
