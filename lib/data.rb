@@ -107,6 +107,7 @@ else
       end
       %(#<#{name} #{attribute_markers.join(", ")}>)
     end
+    alias_method :to_s, :inspect
 
     def with(**kwargs)
       self.class.new(*@attributes.merge(kwargs).values)

@@ -140,6 +140,7 @@ class TestData < Minitest::Test
     klass = Data.define(:one, :two)
     o = klass.new(1,2)
     assert_equal("#<data one=1, two=2>", o.inspect)
+    assert_equal("#<data one=1, two=2>", o.to_s)
   end
 
   def test_equal
