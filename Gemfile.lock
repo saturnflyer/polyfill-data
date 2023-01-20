@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    polyfill-data (1.0.1)
+    polyfill-data (1.0.2)
 
 GEM
   remote: https://rubygems.org/
