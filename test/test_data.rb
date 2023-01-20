@@ -179,4 +179,10 @@ class TestData < Minitest::Test
     assert_equal(10, distance.amount)
     assert_equal('km', distance.unit)
   end
+
+  def test_namespaced_constant
+    klass = Data.define("Measure", :amount, :unit)
+
+    assert_equal(Data::Measure, klass)
+  end
 end

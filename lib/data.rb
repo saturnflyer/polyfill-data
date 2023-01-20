@@ -15,6 +15,11 @@ else
       raise ArgumentError if args.any?(/=/)
       klass = ::Class.new(self, &block)
 
+      if args.first.is_a?(String)
+        name = args.shift
+        Data.const_set(name, klass)
+      end
+
       klass.define_singleton_method(:members) { args.map{ _1.intern } }
 
       klass.define_singleton_method(:new) do |*new_args, **new_kwargs, &block|
