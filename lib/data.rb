@@ -105,7 +105,7 @@ else
         insect_key = key.to_s.start_with?("@") ? ":#{key}" : key
         "#{insect_key}=#{value}"
       end
-      %(#<#{name} #{attribute_markers.join(" ")}>)
+      %(#<#{name} #{attribute_markers.join(", ")}>)
     end
 
     def with(**kwargs)

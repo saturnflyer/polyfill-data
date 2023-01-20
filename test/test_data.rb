@@ -136,6 +136,10 @@ class TestData < Minitest::Test
     klass = Data.define(:@a)
     o = klass.new(1)
     assert_equal("#<data :@a=1>", o.inspect)
+
+    klass = Data.define(:one, :two)
+    o = klass.new(1,2)
+    assert_equal("#<data one=1, two=2>", o.inspect)
   end
 
   def test_equal
