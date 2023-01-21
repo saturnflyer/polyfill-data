@@ -55,11 +55,11 @@ else
     end
 
     def initialize(**kwargs)
-      @attributes = kwargs
+      @attributes = Hash[members.map {|m| [m,kwargs[m]] }]
     end
 
     def deconstruct
-      to_a
+      @attributes.values
     end
 
     def deconstruct_keys(array)
@@ -67,10 +67,6 @@ else
       return @attributes if array&.first.nil?
 
       @attributes.slice(*array)
-    end
-
-    def to_a
-      @attributes.values
     end
 
     def to_h(&block)

@@ -118,8 +118,8 @@ class TestData < Minitest::Test
     assert_equal({foo: 1}, test.deconstruct_keys(%i[foo baz]))
     assert_raises(TypeError) { test.deconstruct_keys(0) }
 
+    test = klass.new(bar: 2, foo: 1)
     assert_equal([1, 2], test.deconstruct)
-    assert_equal([1, 2], test.to_a)
 
     assert_predicate(test, :frozen?)
 

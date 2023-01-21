@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- freeze after initializing
+- `to_a` removed
+- `deconstruct` fixed to return array in order of members as defined
+
 ## 1.0.1
 
 ### Added 
