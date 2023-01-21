@@ -121,6 +121,8 @@ class TestData < Minitest::Test
     assert_equal([1, 2], test.deconstruct)
     assert_equal([1, 2], test.to_a)
 
+    assert_predicate(test, :frozen?)
+
     assert_kind_of(Integer, test.hash)
   end
 

@@ -32,7 +32,7 @@ else
 
         self.allocate.tap do |instance|
           instance.send(:initialize, **init_kwargs, &block)
-        end
+        end.freeze
       end
       class << klass
         alias_method :[], :new
