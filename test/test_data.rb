@@ -222,7 +222,7 @@ class TestData < Minitest::Test
     end
     assert_raises(ArgumentError, "wrong number of arguments (given 1, expected 0)") do
       source.with({ bar: 2 })
-    end
+    end unless RUBY_VERSION < "2.8.0"
   end
 
   def test_memberless
