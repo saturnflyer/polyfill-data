@@ -23,8 +23,8 @@ else
       klass.define_singleton_method(:members) { args.map{ _1.intern } }
 
       klass.define_singleton_method(:new) do |*new_args, **new_kwargs, &block|
-
         init_kwargs = if new_args.any?
+          raise ArgumentError, "unknown arguments #{new_args[members.size..].join(', ')}" if new_args.size > members.size
           Hash[members.take(new_args.size).zip(new_args)]
         else
           new_kwargs
@@ -55,6 +55,17 @@ else
     end
 
     def initialize(**kwargs)
+      kwargs_size = kwargs.size
+      members_size = members.size
+
+      if kwargs_size > members_size
+        extras = kwargs.reject{|k, _v| members.include?(k) }.keys
+        raise ArgumentError, "unknown arguments #{extras.join(', ')}"
+      elsif kwargs_size < members_size
+        missing = members.select {|k, _v| !kwargs.include?(k) }
+        raise ArgumentError, "missing arguments #{missing.map{ ":#{_1}" }.join(', ')}"
+      end
+
       @attributes = Hash[members.map {|m| [m,kwargs[m]] }]
     end
 
