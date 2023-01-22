@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.email = ["jim@saturnflyer.com"]
 
   spec.summary = "Add the ruby 3.2 Data class to older rubies"
-  spec.description = "Add the ruby 3.2 Data class to older rubies"
+  spec.description = "Add the ruby 3.2 Data class to older rubies. Do nothing in 3.2"
   spec.license = "MIT"
   spec.homepage = "https://github.com/saturnflyer/polyfill-data"
   spec.required_ruby_version = ">= 2.6.0", "< 3.2.0"
