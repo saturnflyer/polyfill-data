@@ -115,6 +115,15 @@ else
 
     private
 
+    def marshal_dump
+      @attributes
+    end
+
+    def marshal_load(attributes)
+      @attributes = attributes
+      freeze
+    end
+
     def initialize_copy(source)
       super.freeze
     end
