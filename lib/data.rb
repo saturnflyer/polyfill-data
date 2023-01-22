@@ -9,6 +9,7 @@ else
   class Data < Object
     class << self
       undef_method :new
+      attr_reader :members
     end
 
     def self.define(*args, &block)
@@ -20,7 +21,7 @@ else
         Data.const_set(name, klass)
       end
 
-      klass.define_singleton_method(:members) { args.map{ _1.intern } }
+      klass.instance_variable_set(:@members, args)
 
       klass.define_singleton_method(:new) do |*new_args, **new_kwargs, &block|
         init_kwargs = if new_args.any?
