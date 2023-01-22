@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- loading from `Marshal.load` will create a frozen object
 - `dup` will return a frozen object
 - `define` cannot be used on Data subclasses
 - `with` returns `self` when given no arguments
