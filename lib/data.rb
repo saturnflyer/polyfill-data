@@ -35,6 +35,7 @@ else
           instance.send(:initialize, **init_kwargs, &block)
         end.freeze
       end
+
       class << klass
         alias_method :[], :new
         undef_method :define
@@ -99,12 +100,14 @@ else
     end
 
     def inspect
-      name = ["data", self.class.name].compact.join(" ")
       attribute_markers = @attributes.map do |key, value|
         insect_key = key.to_s.start_with?("@") ? ":#{key}" : key
         "#{insect_key}=#{value}"
-      end
-      %(#<#{name} #{attribute_markers.join(", ")}>)
+      end.join(", ")
+
+      display = ["data", self.class.name, attribute_markers].compact.join(" ")
+
+      "#<#{display}>"
     end
     alias_method :to_s, :inspect
 
