@@ -113,10 +113,10 @@ else
       self.class.new(**@attributes.merge(kwargs))
     end
 
-      private
+    private
 
-      def initialize_copy(source)
-        super.freeze
-      end
+    def initialize_copy(source)
+      super.freeze
+    end
   end
 end
