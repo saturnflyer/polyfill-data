@@ -86,7 +86,7 @@ class TestData < Minitest::Test
         super(foo: 1, bar: 2) # so we can experiment with passing wrong numbers of args
       end
     end
-    # require 'debug'; debugger
+
     assert_equal([[], {foo: 1, bar: 2}], klass.new(foo: 1, bar: 2).passed)
 
     # Positional arguments are converted to keyword ones
