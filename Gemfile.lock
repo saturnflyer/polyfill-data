@@ -19,6 +19,7 @@ GEM
       io-console (~> 0.5)
 
 PLATFORMS
+  arm64-darwin-20
   arm64-darwin-21
 
 DEPENDENCIES
