@@ -36,6 +36,7 @@ else
       end
       class << klass
         alias_method :[], :new
+        undef_method :define
       end
 
       args.map do |arg|
@@ -107,7 +108,15 @@ else
     alias_method :to_s, :inspect
 
     def with(**kwargs)
+      return self if kwargs.empty?
+
       self.class.new(**@attributes.merge(kwargs))
     end
+
+      private
+
+      def initialize_copy(source)
+        super.freeze
+      end
   end
 end
