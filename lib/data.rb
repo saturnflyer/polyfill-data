@@ -14,7 +14,14 @@ else
 
     def self.define(*args, &block)
       raise ArgumentError if args.any?(/=/)
-      klass = ::Class.new(self, &block)
+      if block
+        mod = Module.new
+        mod.define_singleton_method(:_,) do |klass|
+          klass.class_eval(&block)
+        end
+        arity_converter = mod.method(:_)
+      end
+      klass = ::Class.new(self)
 
       if args.first.is_a?(String)
         name = args.shift
@@ -48,6 +55,10 @@ else
         klass.define_method(arg) do
           @attributes[arg]
         end
+      end
+
+      if arity_converter
+        klass.class_eval(&arity_converter)
       end
 
       klass

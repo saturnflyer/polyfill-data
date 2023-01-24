@@ -269,4 +269,25 @@ class TestData < Minitest::Test
 
     assert_equal(Data::Measure, klass)
   end
+
+  def test_member_precedence
+   name_mod = Module.new do
+      def name
+        "default name"
+      end
+
+      def other
+        "other"
+      end
+    end
+
+    klass = Data.define(:name) do
+      include name_mod
+    end
+
+    data = klass.new("test")
+
+    assert_equal("test", data.name)
+    assert_equal("other", data.other)
+  end
 end
