@@ -11,6 +11,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## 1.0.6
+
+### Fixed
+
+- use `each` to avoid allocating an unused array
+
 ## 1.0.5
 
 ### Fixed
