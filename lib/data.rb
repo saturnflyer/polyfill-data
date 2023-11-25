@@ -48,7 +48,7 @@ else
         undef_method :define
       end
 
-      args.map do |arg|
+      args.each do |arg|
         if klass.method_defined?(arg)
           raise ArgumentError, "duplicate member #{arg}"
         end
